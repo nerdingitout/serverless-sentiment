@@ -17,7 +17,7 @@ It will take you around 30 minutes to complete this tutorial.
 
 You can install the OpenShift Serverless Operator using the OperatorHub in your OpenShift dashboard. Use Update Channel version 4.5
 
-![Serverless Operator](images/serverless-operator.png)
+![serverless operator](https://user-images.githubusercontent.com/36239840/105360538-21baf780-5c12-11eb-8b87-41c77346dca0.JPG)
 
-![Serverless Operator Configuration](images/serverless-operator-config.png)
+![image](https://user-images.githubusercontent.com/36239840/105360830-78283600-5c12-11eb-8a22-c22e8816ef6f.png)
 ## Summary
