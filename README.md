@@ -9,10 +9,9 @@ For this tutorial you will need:
 It will take you around 30 minutes to complete this tutorial.
 ## Steps
 - Create Cloudant Service on IBM Cloud
-- Login to your OpenShift Cluster
 - Install OpenShift Serverless Operator
+- Login to your OpenShift Cluster
 ## Create Cloudant Service on IBM Cloud
-## Login to your OpenShift Cluster
 ## Install OpenShift Serverless
 
 You can install the OpenShift Serverless Operator using the OperatorHub in your OpenShift dashboard. Use Update Channel version 4.5
@@ -20,4 +19,6 @@ You can install the OpenShift Serverless Operator using the OperatorHub in your 
 ![serverless operator](https://user-images.githubusercontent.com/36239840/105360538-21baf780-5c12-11eb-8b87-41c77346dca0.JPG)
 
 ![installed](https://user-images.githubusercontent.com/36239840/105361025-af96e280-5c12-11eb-8aa6-38d58d4f4b65.JPG)
+## Login to your OpenShift Cluster
+
 ## Summary
