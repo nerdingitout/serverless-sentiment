@@ -19,5 +19,5 @@ You can install the OpenShift Serverless Operator using the OperatorHub in your 
 
 ![serverless operator](https://user-images.githubusercontent.com/36239840/105360538-21baf780-5c12-11eb-8b87-41c77346dca0.JPG)
 
-![image](https://user-images.githubusercontent.com/36239840/105360830-78283600-5c12-11eb-8a22-c22e8816ef6f.png)
+![installed](https://user-images.githubusercontent.com/36239840/105361025-af96e280-5c12-11eb-8aa6-38d58d4f4b65.JPG)
 ## Summary
