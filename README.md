@@ -3,7 +3,11 @@
 This tutorial aims to demonstrate the serverless functionality on Red Hat OpenShift. In this tutorial you will deploy an application that is made of frontend and backend. The frontend consists of a simple form where the user submits a sentence which is then processed in the backend to later view the output of the sentiment. The backend is a python application that uses TextBlob library to detect the sentiment in addition to Cloudant to save and fetch results.
 ## Prerequisites
 For this tutorial you will need:
-- Red Hat OpenShift Cluster 4.3 on IBM Cloud.
+- Sign up for your IBM Cloud account – https://ibm.biz/BdfFXA
+- Register for the live stream and access the replay – https://www.crowdcast.io/e/serverless-knative
+- Red Hat OpenShift Cluster 4 on IBM Cloud. You can get it from
+  - URL:
+  - Key:
 - oc CLI (can be downloaded from this link or you can use it at http://shell.cloud.ibm.com/.
 ## Estimated Time
 It will take you around 30 minutes to complete this tutorial.
