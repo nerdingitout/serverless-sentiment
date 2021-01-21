@@ -10,6 +10,8 @@ It will take you around 30 minutes to complete this tutorial.
 ## Steps
 - Create Cloudant Service on IBM Cloud
 - Login to your OpenShift Cluster
+- Install OpenShift Serverless Operator
 ## Create Cloudant Service on IBM Cloud
 ## Login to your OpenShift Cluster
+## Install OpenShift Serverless Operator
 ## Summary
