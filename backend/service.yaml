@@ -1,0 +1,13 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: sentiment 
+  namespace: default 
+spec:
+  template:
+    spec:
+      containers:
+        - image: s4saif/senti:v5
+          env:
+            - name: TARGET
+              value: "Sample v3"
