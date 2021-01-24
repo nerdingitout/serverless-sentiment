@@ -17,7 +17,7 @@ It will take you around 30 minutes to complete this tutorial.
 - Install OpenShift Serverless Operator
 - Login to your OpenShift Cluster
 ## Fork the GitHub repo
-First thing you need to do is fork the GitHub repository so you can make your own changes later.
+- First thing you need to do is fork the GitHub repository so you can make your own changes later.
 ## Create Cloudant Database on IBM Cloud
 - In in this tutorial we will be using Cloudant to save the JSON objects in the database. Create the service on IBM Cloud and name it 'cloudant-sentiment'.
 ![cloudant service](https://user-images.githubusercontent.com/36239840/105366717-16b79580-5c19-11eb-96b5-143304b50020.JPG)
@@ -36,9 +36,9 @@ First thing you need to do is fork the GitHub repository so you can make your ow
 
 ![installed](https://user-images.githubusercontent.com/36239840/105361025-af96e280-5c12-11eb-8aa6-38d58d4f4b65.JPG)
 ## Create Project
-From the Administrator persepective on the web console, go to project and click 'Create Project', and give it a name 'sentiment-project'.
+- From the Administrator persepective on the web console, go to project and click 'Create Project', and give it a name 'sentiment-project'.
 ## Create Frontend and Backend Applications
-Switch to the Developer Perspective and from the Topology click 'from Git' as shown in the image below.
+- Switch to the Developer Perspective and from the Topology click 'from Git' as shown in the image below.
 ![topology](https://user-images.githubusercontent.com/36239840/105624075-455f8700-5e38-11eb-9462-58f1527e9aa1.JPG)
 
 ## Login from the CLI
