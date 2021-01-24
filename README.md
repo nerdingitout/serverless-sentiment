@@ -35,6 +35,12 @@ First thing you need to do is fork the GitHub repository so you can make your ow
 ![serverless operator](https://user-images.githubusercontent.com/36239840/105360538-21baf780-5c12-11eb-8b87-41c77346dca0.JPG)
 
 ![installed](https://user-images.githubusercontent.com/36239840/105361025-af96e280-5c12-11eb-8aa6-38d58d4f4b65.JPG)
+## Create Project
+From the Administrator persepective on the web console, go to project and click 'Create Project', and give it a name 'sentiment-project'.
+## Create Frontend and Backend Applications
+Switch to the Developer Perspective and from the Topology click 'from Git' as shown in the image below.
+![topology](https://user-images.githubusercontent.com/36239840/105624075-455f8700-5e38-11eb-9462-58f1527e9aa1.JPG)
+
 ## Login from the CLI
 - Go to the web console and click on your username at the top right then 'Copy Login Command', then display the token and copy the ```oc login``` command in your terminal.<br>
 ![login](https://user-images.githubusercontent.com/36239840/97104809-26821500-16d0-11eb-936e-c2b7fb914523.JPG)
