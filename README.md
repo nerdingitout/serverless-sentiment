@@ -28,6 +28,7 @@ It will take you around 30 minutes to complete this tutorial.
 - Then create the Database as shown in the image. Name it 'sample', select Non-parttioned, and click Create.
 ![createdb](https://user-images.githubusercontent.com/36239840/105606398-8c0a9e00-5db2-11eb-8fc6-edddf29e7596.JPG)
 - The sample database opens automatically. Leave the database empty for now. At a later step, you will create the documents through the backend.
+## Make Changes in your Forked repo
 ## Install OpenShift Serverless
 
 - You can install the OpenShift Serverless Operator using the OperatorHub in your OpenShift dashboard. Use Update Channel version 4.5
