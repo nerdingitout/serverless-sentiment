@@ -3,16 +3,29 @@
 <img class="centerimg" src="/assets/emotion.png" >
 <h1 align="center">Get the Sentiment of the Sentence</h1>
 <h2 align="center">Enter your sentence here:</h2>
-<input class="input" type="text" [formControl]="Sentence">
+<input align="center" class="input" type="text" [formControl]="Sentence">
 <div class="centerbutton">
 <button class="submit" type="submit" (click)="onSubmit()">Submit</button>
 </div>
-<h1>Sentence: {{Sentence.value}}</h1>
+<!--<h1>Sentence: {{Sentence.value}}</h1>-->
+<div class="result">
+    <h3>Text you submitted: {{apiText}}</h3> <!--this is just for debugging, we can delete it-->
+    <h3>Sentiment: {{apiSentiment}}</h3>
+</div>
 </body>
 
 
 <style>
+.result{
+    margin: auto;
+    width: 60%;        
+    padding: 10px;
+    border: 6px solid #6BDD98;
+    border-radius: 10px;
+    margin-top:2%
+}
 html, body {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     width: 100vw;
     min-height: 100vh;
     background-color: #F7F7F7;
@@ -32,7 +45,7 @@ html, body {
 .input{
     width: 80%;
     padding: 12px 20px;
-    margin: 8px 25px;
+    margin: 8px 10%;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -45,7 +58,7 @@ html, body {
 }
 .submit{
     width: 30%;
-    background-color: #4CAF50;
+    background-color: #6BDD98;
     color: white;
     padding: 14px 20px;
     border: none;
@@ -57,4 +70,4 @@ html, body {
     background-color: #45a049;
 }
 </style>
-</html>
+</html> 
