@@ -14,6 +14,7 @@ It will take you around 30 minutes to complete this tutorial.
 ## Steps
 - Fork the GitHub repo
 - Create Cloudant Datavase on IBM Cloud
+- Make Changes in your Forked repo
 - Install OpenShift Serverless Operator
 - Login to your OpenShift Cluster
 ## Fork the GitHub repo
