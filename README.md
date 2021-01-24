@@ -14,7 +14,6 @@ It will take you around 30 minutes to complete this tutorial.
 ## Steps
 - Fork the GitHub repo
 - Create Cloudant Datavase on IBM Cloud
-- Make Changes in your Forked repo
 - Install OpenShift Serverless Operator
 - Login to your OpenShift Cluster
 ## Fork the GitHub repo
@@ -29,7 +28,6 @@ It will take you around 30 minutes to complete this tutorial.
 - Then create the Database as shown in the image. Name it 'sample', select Non-parttioned, and click Create.
 ![createdb](https://user-images.githubusercontent.com/36239840/105606398-8c0a9e00-5db2-11eb-8fc6-edddf29e7596.JPG)
 - The sample database opens automatically. Leave the database empty for now. At a later step, you will create the documents through the backend.
-## Make Changes in your Forked repo
 ## Install OpenShift Serverless
 
 - You can install the OpenShift Serverless Operator using the OperatorHub in your OpenShift dashboard. Use Update Channel version 4.5
@@ -42,8 +40,10 @@ It will take you around 30 minutes to complete this tutorial.
 ## Create Frontend and Backend Applications
 - Switch to the Developer Perspective and from the Topology click 'from Git' as shown in the image below.
 ![topology](https://user-images.githubusercontent.com/36239840/105624075-455f8700-5e38-11eb-9462-58f1527e9aa1.JPG)
-
+- For the backend, add the Git Repo URL and Context Dir ```/backend``` as shown in the image below, name the application ```serverless-sentiment-backend``` and click create
+![git backend](https://user-images.githubusercontent.com/36239840/105634034-81fda380-5e75-11eb-862d-4654ec3cfa94.JPG)
+![appname-be](https://user-images.githubusercontent.com/36239840/105634133-1831c980-5e76-11eb-836e-b3cdf6785b90.JPG)
+- Do the same for the frontend, add the same Git Repo URL, but make Context Dir ```/frontend```, name it ```serverless-sentiment-frontend``` and click create.
 ## Login from the CLI
 - Go to the web console and click on your username at the top right then 'Copy Login Command', then display the token and copy the ```oc login``` command in your terminal.<br>
 ![login](https://user-images.githubusercontent.com/36239840/97104809-26821500-16d0-11eb-936e-c2b7fb914523.JPG)
-## Summary
