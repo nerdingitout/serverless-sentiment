@@ -18,6 +18,7 @@ It will take you around 30 minutes to complete this tutorial.
 - Login to your OpenShift Cluster
 ## Fork the GitHub repo
 - First thing you need to do is fork the GitHub repository so you can make your own changes later.
+
 ## Create Cloudant Database on IBM Cloud
 - In in this tutorial we will be using Cloudant to save the JSON objects in the database. Create the service on IBM Cloud and name it 'cloudant-sentiment'.
 ![cloudant service](https://user-images.githubusercontent.com/36239840/105366717-16b79580-5c19-11eb-96b5-143304b50020.JPG)
@@ -28,22 +29,40 @@ It will take you around 30 minutes to complete this tutorial.
 - Then create the Database as shown in the image. Name it 'sample', select Non-parttioned, and click Create.
 ![createdb](https://user-images.githubusercontent.com/36239840/105606398-8c0a9e00-5db2-11eb-8fc6-edddf29e7596.JPG)
 - The sample database opens automatically. Leave the database empty for now. At a later step, you will create the documents through the backend.
+
 ## Install OpenShift Serverless
-
-- You can install the OpenShift Serverless Operator using the OperatorHub in your OpenShift dashboard. Use Update Channel version 4.5
-
+- From the web console, you can install the OpenShift Serverless Operator using the OperatorHub in your OpenShift dashboard. Use Update Channel version 4.5
 ![serverless operator](https://user-images.githubusercontent.com/36239840/105360538-21baf780-5c12-11eb-8b87-41c77346dca0.JPG)
-
 ![installed](https://user-images.githubusercontent.com/36239840/105361025-af96e280-5c12-11eb-8aa6-38d58d4f4b65.JPG)
-## Create Project
-- From the Administrator persepective on the web console, go to project and click 'Create Project', and give it a name 'sentiment-project'.
-## Create Frontend and Backend Applications
-- Switch to the Developer Perspective and from the Topology click 'from Git' as shown in the image below.
-![topology](https://user-images.githubusercontent.com/36239840/105624075-455f8700-5e38-11eb-9462-58f1527e9aa1.JPG)
-- For the backend, add the Git Repo URL and Context Dir ```/backend``` as shown in the image below, name the application ```serverless-sentiment-backend``` and click create
-![git backend](https://user-images.githubusercontent.com/36239840/105634034-81fda380-5e75-11eb-862d-4654ec3cfa94.JPG)
-![appname-be](https://user-images.githubusercontent.com/36239840/105634133-1831c980-5e76-11eb-836e-b3cdf6785b90.JPG)
-- Do the same for the frontend, add the same Git Repo URL, but make Context Dir ```/frontend```, name it ```serverless-sentiment-frontend``` and click create.
+
 ## Login from the CLI
 - Go to the web console and click on your username at the top right then 'Copy Login Command', then display the token and copy the ```oc login``` command in your terminal.<br>
 ![login](https://user-images.githubusercontent.com/36239840/97104809-26821500-16d0-11eb-936e-c2b7fb914523.JPG)
+
+## Create Project
+- From the CLI, create a project and name it 'sentiment-project' as shown in the following command.<br>
+```oc new-project sentiment-project```
+
+## Create Backend Application
+In this step, you will be creating the backend application through the ```service.yaml``` file that's in the backend directory in the github repo. Use the following command.<br>
+```oc apply -f https://raw.githubusercontent.com/nerdingitout/serverless-sentiment/main/backend/service.yaml```
+<br>
+The yaml file contains the following information. Make sure that the namespace matches the name you created.<br>
+```
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: sentiment 
+  namespace: sentiment-project 
+spec:
+  template:
+    spec:
+      containers:
+        - image: s4saif/senti:v6
+          env:
+            - name: TARGET
+              value: "Sample v3"
+```
+<br>Once created, you can find the newly deployed application on the topology as shown below. Keep in mind that it is a serverless application so the pods will be terminated if you aren't accessing it which means the circle around the pod will be colored in white. If you try to access the application externally, you will notice new pods have been created, which will change the color to dark blue. You will notice that the application would show 404 status, but don't worry much, we will be using the application with the frontend application.
+![topology backend](https://user-images.githubusercontent.com/36239840/105719666-fbf86000-5f3b-11eb-8cfc-6328f0be8e26.JPG)
+
