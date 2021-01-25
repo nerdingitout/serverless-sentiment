@@ -44,10 +44,10 @@ It will take you around 30 minutes to complete this tutorial.
 ```oc new-project sentiment-project```
 
 ## Create Backend Application
-- In this step, you will be creating the backend application through the ```service.yaml``` file that's in the backend directory in the github repo. Use the following command.<br>
+- In this step, you will be creating the backend application through the ```service.yaml``` file that's in the backend directory in the github repo. Use the following command.
 ```oc apply -f https://raw.githubusercontent.com/nerdingitout/serverless-sentiment/main/backend/service.yaml```
-<br>
-The yaml file contains the following information. Make sure that the namespace matches the name you created.<br>
+<br>The yaml file contains the following information. Make sure that the namespace matches the name you created.<br>
+
 ```
 apiVersion: serving.knative.dev/v1
 kind: Service
@@ -63,3 +63,9 @@ spec:
             - name: TARGET
               value: "Sample v3"
 ```
+- Once created, you can find the newly deployed application on the topology as shown below. Keep in mind that it is a serverless application so the pods will be terminated if you aren't accessing it which means the circle around the pod will be colored in white. If you try to access the application externally, you will notice new pods have been created, which will change the color to dark blue. You will notice that the application would show 404 status, but don't worry much, we will be using the application with the frontend application.
+![topology backend](https://user-images.githubusercontent.com/36239840/105719666-fbf86000-5f3b-11eb-8cfc-6328f0be8e26.JPG)
+- Make sure to copy the route of the backend, because you will be using it to make an API call from your frontend application. To view the route of the backend from the CLI, write the following command.
+```oc get route.serving.knative.dev```
+![route](https://user-images.githubusercontent.com/36239840/105720119-80e37980-5f3c-11eb-9b93-14f523044947.JPG)
+## Edit your Frontend application
