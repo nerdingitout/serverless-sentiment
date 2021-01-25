@@ -4,3 +4,4 @@ ibm-cloud-sdk-core==3.3.6
 ibmcloudant==0.0.29
 Flask==1.0.2
 textblob
+flask_cors
