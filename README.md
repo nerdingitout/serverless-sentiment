@@ -68,5 +68,29 @@ spec:
 - Make sure to copy the route of the backend, because you will be using it to make an API call from your frontend application. To view the route of the backend from the CLI, write the following command.
 ```oc get route.serving.knative.dev```
 ![route](https://user-images.githubusercontent.com/36239840/105720119-80e37980-5f3c-11eb-9b93-14f523044947.JPG)
+## Add Environment Variables to your Backend Application
+In this step, you will be using secrets to pass your Cloudant service credintials to the applications. Use the following command and make sure to replace the fields with your actual credintials.
+```oc create secret genneric etc.......``` [UPDATE COMMAND LATER]
 ## Edit your Frontend application
+In your forked repo, you will need to replace the URL in the typescript code. Go to ```frontend-app.component.ts``` in the```/frontend/src/app/frontend-app/``` directory. Add the URL of the backend that you copied earlier to the following section in the ```onSubmit()``` function.<br>
+```
+onSubmit(){
+      this.apiSentiment='';
+            // Simple POST request with a JSON body and response type <any>
+            this.http.post<any>('<ADD-BACKEND-URL-HERE>', { text: this.Sentence.value }).subscribe(data => {
+              this.apiSentimentNum = data.sentiment;
+              this.apiText = data.text;
+          })
+```
+## Create your frontend application
+- Create your frontend application from the CLI using the following command. Make sure to paste the URL of your forked repo and add ```frontend``` context directory.
+``` oc new-app https://github.com/nerdingitout/serverless-sentiment.git --context-dir=frontend
+```
+- Expose your frontend application to access it externally
+```
+oc expose <pod-name>
+```
+## Test Your application and View logs
+- Now it's time to test your application using ```oc get pods``` command. Run it multiple times and notice changes how the application scales up and down everytime you submit your sentences through the frontend application.
 
+[PROVIDE SCREENSHOTS HERE]
