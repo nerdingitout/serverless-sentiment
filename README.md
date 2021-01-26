@@ -90,20 +90,47 @@ oc get route.serving.knative.dev
 ![route](https://user-images.githubusercontent.com/36239840/105720119-80e37980-5f3c-11eb-9b93-14f523044947.JPG)
 
 ## Edit your Frontend application
-In your forked repo, you will need to replace the URL in the typescript code. Go to ```frontend-app.component.ts``` in the```/frontend/src/app/frontend-app/``` directory. Add the URL of the backend that you copied earlier to the following section in the ```onSubmit()``` function.<br>
+- In your forked repo, you will need to replace the URL in the typescript code. Go to ```frontend-app.component.ts``` in the```/frontend/src/app/frontend-app/``` directory. Add the URL of the backend that you copied earlier to the following section in the ```onSubmit()``` function.<br>
 ```
 onSubmit(){
       this.apiSentiment='';
             // Simple POST request with a JSON body and response type <any>
-            this.http.post<any>('<ADD-BACKEND-URL-HERE>', { text: this.Sentence.value }).subscribe(data => {
+            this.http.post<any>('<ADD-BACKEND-URL-HERE>'+'/api/post_sentiment', { text: this.Sentence.value }).subscribe(data => {
               this.apiSentimentNum = data.sentiment;
               this.apiText = data.text;
           })
 ```
-## Create your frontend application
-- Create your frontend application from the CLI using the following command. Make sure to paste the URL of your forked repo and add ```frontend``` context directory.
+- In your forked repo, make sure to edit the ```buildconfig.yaml``` file, by replacing the uri with the URL of your github repo as shown below.
 ```
-oc new-app <YOUR-FORKED-REPO-LINK-HERE> --context-dir=frontend
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: angular:latest
+  runPolicy: Serial
+  source:
+    git:
+      ref: main
+      uri: <YOUR-URI-HERE>
+    type: Git
+```
+## Create your frontend application
+- To create the frontend application, in this tutorial, use the ```oc apply``` command for the files in the ```frontend/yamls/``` directory. You can clone your repo and use the following command for your local directory.
+```
+oc apply -f yamls/
+```
+Or you can use the following commands with your URL (make sure to replace the username).
+```
+oc apply -f https://raw.githubusercontent.com/<YOUR-USERNAME>/serverless-sentiment/main/frontend/yamls/buildconfig.yaml
+```
+```
+oc apply -f https://raw.githubusercontent.com/<YOUR-USERNAME>/serverless-sentiment/main/frontend/yamls/dc.yaml
+```
+```
+oc apply -f https://raw.githubusercontent.com/<YOUR-USERNAME>/serverless-sentiment/main/frontend/yamls/is.yaml
+```
+```
+oc apply -f https://raw.githubusercontent.com/<YOUR-USERNAME>/serverless-sentiment/main/frontend/yamls/service.yaml
 ```
 - Expose your frontend application to access it externally
 ```
