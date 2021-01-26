@@ -148,6 +148,6 @@ oc get pods
 oc get all -n sentiment-project
 ```
 ## View the Database
-[PROVIDE SCREENSHOTS HERE]
+![image](https://user-images.githubusercontent.com/36239840/105850425-25c48c00-5ffb-11eb-9885-539b4cbe136e.png)
 
 
