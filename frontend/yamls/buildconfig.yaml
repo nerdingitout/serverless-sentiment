@@ -17,6 +17,7 @@ spec:
       ref: main
       uri: https://github.com/nerdingitout/serverless-sentiment
     type: Git
+    contextDir: "frontend"
   strategy:
     dockerStrategy:
     type: Docker
