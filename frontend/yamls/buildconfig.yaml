@@ -14,10 +14,9 @@ spec:
   runPolicy: Serial
   source:
     git:
-      ref: master
+      ref: main
       uri: https://github.com/nerdingitout/serverless-sentiment
     type: Git
-    contextDir: "frontend"
   strategy:
     dockerStrategy:
     type: Docker
@@ -26,8 +25,8 @@ spec:
       type: ImageChange
     - type: ConfigChange
     - generic:
-        secret: secret1
+        secret: dfgvbh
       type: Generic
     - github:
-        secret: secret1
+        secret: dfgvbh
       type: GitHub
