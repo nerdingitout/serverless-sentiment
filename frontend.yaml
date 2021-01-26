@@ -1,0 +1,57 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: s2i-angular-nginx-builder
+  labels:
+    app: s2i-angular-nginx
+  annotations:
+    openshift.io/display-name: "Angular / Nginx Builder Image Builder"
+    description: "Construct an s2i-angular-nginx builder image for use in this project"
+    iconClass: "icon-openshift"
+    tags: "builder,js,angular,nginx"
+objects:
+- kind: ImageStream
+  apiVersion: v1
+  metadata:
+    name: s2i-angular-nginx
+  triggers:
+    - type: ConfigChange
+  spec:
+    lookupPolicy:
+      local: true
+    dockerImageRepository: s2i-angular-nginx
+    tags:
+    - name: latest
+      annotations:
+        openshift.io/display-name: "Angular / Nginx Builder Image"
+        description: Build Angular apps with CLI and run them with nginx:latest
+        iconClass: icon-angularjs
+        tags: builder,js,angular,nginx
+        version: "1"
+      from:
+        kind: ImageStreamTag
+        name: latest
+- kind: BuildConfig
+  apiVersion: "v1"
+  metadata:
+    name: s2i-angular-nginx
+    labels:
+      app: s2i-angular-nginx
+  triggers:
+    - type: ConfigChange
+    - github:
+        secret: 5e2c820db87f67d7
+      type: GitHub
+  spec:
+    source:
+      type: Git
+      git:
+        uri: https://github.com/nerdingitout/serverless-sentiment.git
+    strategy:
+      type: Docker
+    output:
+      to:
+        kind: ImageStreamTag
+        name: s2i-angular-nginx:latest
+parameters:
+message: "s2i-angular-nginx has been created. Build it in order to use it."
