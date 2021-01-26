@@ -1,6 +1,6 @@
 # Deploy a Serverless Application that detects sentiment of text on Red Hat OpenShift
 ## Introduction
-This tutorial aims to demonstrate the serverless functionality on Red Hat OpenShift. In this tutorial you will deploy an application that is made of frontend and backend. The frontend consists of a simple form where the user submits a sentence which is then processed in the backend to later view the output of the sentiment. The backend is a python application that uses TextBlob library to detect the sentiment in addition to Cloudant to save and fetch results.
+This tutorial aims to demonstrate the serverless functionality on Red Hat OpenShift. In this tutorial you will deploy an application that is made of frontend and backend. The frontend is an angular application that consists of a simple form where the user submits a sentence which is then processed in the backend to later view the output of the sentiment. The backend is a python application based on Flask that uses TextBlob library to detect the sentiment in addition to Cloudant to save and fetch results.
 ## Prerequisites
 For this tutorial you will need:
 - Sign up for your IBM Cloud account – https://ibm.biz/BdfFXA
