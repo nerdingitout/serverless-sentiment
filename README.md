@@ -73,8 +73,14 @@ spec:
 ```oc get route.serving.knative.dev```
 ![route](https://user-images.githubusercontent.com/36239840/105720119-80e37980-5f3c-11eb-9b93-14f523044947.JPG)
 ## Add Environment Variables to your Backend Application
-In this step, you will be using secrets to pass your Cloudant service credintials to the applications. Use the following command and make sure to replace the fields with your actual credintials.
-```oc create secret genneric etc.......``` [UPDATE COMMAND LATER]
+- In this step, you will be using secrets to pass your Cloudant service credintials to the applications. Use the following command and make sure to replace the fields with your actual credintials.
+```
+oc create secret generic secret --from-literal=apikey=<YOUR-CLOUDANT-API-KEY-HERE> -n sentiment-project
+```
+- Add the URL of your Cloudant instance as a configmap using the following command, make sure to replace the value of the url.
+```
+oc create configmap my-config --from-literal=url=<YOUR-CLOUDANT-URL-HERE> -n sentiment-project
+```
 ## Edit your Frontend application
 In your forked repo, you will need to replace the URL in the typescript code. Go to ```frontend-app.component.ts``` in the```/frontend/src/app/frontend-app/``` directory. Add the URL of the backend that you copied earlier to the following section in the ```onSubmit()``` function.<br>
 ```
