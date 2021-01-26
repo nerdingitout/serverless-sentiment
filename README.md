@@ -30,14 +30,17 @@ It will take you around 30 minutes to complete this tutorial.
 ![createdb](https://user-images.githubusercontent.com/36239840/105606398-8c0a9e00-5db2-11eb-8fc6-edddf29e7596.JPG)
 - The sample database opens automatically. Leave the database empty for now. At a later step, you will create the documents through the backend.
 
+## Login from the CLI
+- Go to the web console and click on your username at the top right then 'Copy Login Command', then display the token and copy the ```oc login``` command in your terminal.<br>
+![login](https://user-images.githubusercontent.com/36239840/97104809-26821500-16d0-11eb-936e-c2b7fb914523.JPG)
+
 ## Install OpenShift Serverless
 - From the web console, you can install the OpenShift Serverless Operator using the OperatorHub in your OpenShift dashboard. Use Update Channel version 4.5
 ![serverless operator](https://user-images.githubusercontent.com/36239840/105360538-21baf780-5c12-11eb-8b87-41c77346dca0.JPG)
 ![installed](https://user-images.githubusercontent.com/36239840/105361025-af96e280-5c12-11eb-8aa6-38d58d4f4b65.JPG)
-
-## Login from the CLI
-- Go to the web console and click on your username at the top right then 'Copy Login Command', then display the token and copy the ```oc login``` command in your terminal.<br>
-![login](https://user-images.githubusercontent.com/36239840/97104809-26821500-16d0-11eb-936e-c2b7fb914523.JPG)
+- Check if Knative Serving was installed successfully.<br>
+```oc get knativeserving.operator.knative.dev/knative-serving -n knative-serving --template='{{range .status.conditions}}{{printf "%s=%s\n" .type .status}}{{end}}'```
+![image](https://user-images.githubusercontent.com/36239840/105842199-3ff86d00-5fef-11eb-8b0c-ebeaff989516.png)
 
 ## Create Project
 - From the CLI, create a project and name it 'sentiment-project' as shown in the following command.<br>
