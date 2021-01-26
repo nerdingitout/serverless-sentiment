@@ -39,14 +39,20 @@ It will take you around 30 minutes to complete this tutorial.
 ![serverless operator](https://user-images.githubusercontent.com/36239840/105360538-21baf780-5c12-11eb-8b87-41c77346dca0.JPG)
 ![installed](https://user-images.githubusercontent.com/36239840/105361025-af96e280-5c12-11eb-8aa6-38d58d4f4b65.JPG)
 - Check if Knative Serving was installed successfully.<br>
-```oc get knativeserving.operator.knative.dev/knative-serving -n knative-serving --template='{{range .status.conditions}}{{printf "%s=%s\n" .type .status}}{{end}}'```
+```
+oc get knativeserving.operator.knative.dev/knative-serving -n knative-serving --template='{{range .status.conditions}}{{printf "%s=%s\n" .type .status}}{{end}}'
+```
 ![image](https://user-images.githubusercontent.com/36239840/105842199-3ff86d00-5fef-11eb-8b0c-ebeaff989516.png)
 
 ## Create Project
 - From the CLI, create a project and name it 'sentiment-project' as shown in the following command.<br>
-```oc new-project sentiment-project```
+```
+oc new-project sentiment-project
+```
 - Make sure that you are in the correct project using the following command.<br>
-```oc project sentiment-project```
+```
+oc project sentiment-project
+```
 ## Add Environment Variables to your Backend Application
 - In this step, you will be using secrets to pass your Cloudant service credintials to the applications. Use the following command and make sure to replace the fields with your actual credintials.
 ```
@@ -58,7 +64,9 @@ oc create configmap my-config --from-literal=url=<YOUR-CLOUDANT-URL-HERE> -n sen
 ```
 ## Create Backend Application
 - In this step, you will be creating the backend application through the ```service.yaml``` file that's in the backend directory in the github repo. Use the following command.<br>
-```oc apply -f https://raw.githubusercontent.com/nerdingitout/serverless-sentiment/main/backend/service.yaml```
+```
+oc apply -f https://raw.githubusercontent.com/nerdingitout/serverless-sentiment/main/backend/service.yaml
+```
 <br>The yaml file contains the following information. Make sure that the namespace matches the name you created.<br>
 
 ```
@@ -76,7 +84,9 @@ spec:
 - Once created, you can find the newly deployed application on the topology as shown below. Keep in mind that it is a serverless application so the pods will be terminated if you aren't accessing it which means the circle around the pod will be colored in white. If you try to access the application externally, you will notice new pods have been created, which will change the color to dark blue. You will notice that the application is inaccessible, but don't worry much, we will be using the it with the frontend application.
 ![topology backend](https://user-images.githubusercontent.com/36239840/105719666-fbf86000-5f3b-11eb-8cfc-6328f0be8e26.JPG)
 - Make sure to copy the route of the backend, because you will be using it to make an API call from your frontend application. To view the route of the backend from the CLI, write the following command.
-```oc get route.serving.knative.dev```
+```
+oc get route.serving.knative.dev
+```
 ![route](https://user-images.githubusercontent.com/36239840/105720119-80e37980-5f3c-11eb-9b93-14f523044947.JPG)
 
 ## Edit your Frontend application
