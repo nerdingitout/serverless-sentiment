@@ -110,12 +110,17 @@ oc new-app <YOUR-FORKED-REPO-LINK-HERE> --context-dir=frontend
 oc expose <pod-name>
 ```
 ## Test Your application and View logs
-- Now it's time to test your application using ```oc get pods``` command. Run it multiple times and notice changes how the application scales up and down everytime you submit your sentences through the frontend application.
+- Open the frontend application from the external route and submit messages in the form.
+![image](https://user-images.githubusercontent.com/36239840/105845286-f9f1d800-5ff3-11eb-9a7c-d052cc1a35ff.png)
+- Use ```oc get pods``` command to see the pods from the serverless application get created and destroyed. Run it multiple times and notice changes how the application scales up and down everytime you submit your sentences through the frontend application.
 ```
 oc get pods
 ```
+- You can also view 
 ```
 oc get all -n sentiment-project
 ```
 ## View the Database
 [PROVIDE SCREENSHOTS HERE]
+
+
