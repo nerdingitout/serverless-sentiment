@@ -20,7 +20,7 @@ spec:
           - angular
         from:
           kind: "ImageStreamTag"
-          name: angular
+          name: angular:latest
   strategy:
     type: "Rolling"
   paused: false   

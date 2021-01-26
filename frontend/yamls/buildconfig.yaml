@@ -10,7 +10,7 @@ spec:
   output:
     to:
       kind: ImageStreamTag
-      name: angular
+      name: angular:latest
   runPolicy: Serial
   source:
     git:
