@@ -42,9 +42,10 @@ It will take you around 30 minutes to complete this tutorial.
 ## Create Project
 - From the CLI, create a project and name it 'sentiment-project' as shown in the following command.<br>
 ```oc new-project sentiment-project```
-
+- Make sure that you are in the correct project using the following command.<br>
+```oc project sentiment-project```
 ## Create Backend Application
-- In this step, you will be creating the backend application through the ```service.yaml``` file that's in the backend directory in the github repo. Use the following command.
+- In this step, you will be creating the backend application through the ```service.yaml``` file that's in the backend directory in the github repo. Use the following command.<br>
 ```oc apply -f https://raw.githubusercontent.com/nerdingitout/serverless-sentiment/main/backend/service.yaml```
 <br>The yaml file contains the following information. Make sure that the namespace matches the name you created.<br>
 
