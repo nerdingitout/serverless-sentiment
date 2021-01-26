@@ -47,6 +47,15 @@ It will take you around 30 minutes to complete this tutorial.
 ```oc new-project sentiment-project```
 - Make sure that you are in the correct project using the following command.<br>
 ```oc project sentiment-project```
+## Add Environment Variables to your Backend Application
+- In this step, you will be using secrets to pass your Cloudant service credintials to the applications. Use the following command and make sure to replace the fields with your actual credintials.
+```
+oc create secret generic secret --from-literal=apikey=<YOUR-CLOUDANT-API-KEY-HERE> -n sentiment-project
+```
+- Add the URL of your Cloudant instance as a configmap using the following command, make sure to replace the value of the url.
+```
+oc create configmap my-config --from-literal=url=<YOUR-CLOUDANT-URL-HERE> -n sentiment-project
+```
 ## Create Backend Application
 - In this step, you will be creating the backend application through the ```service.yaml``` file that's in the backend directory in the github repo. Use the following command.<br>
 ```oc apply -f https://raw.githubusercontent.com/nerdingitout/serverless-sentiment/main/backend/service.yaml```
@@ -63,24 +72,13 @@ spec:
     spec:
       containers:
         - image: s4saif/senti:v6
-          env:
-            - name: TARGET
-              value: "Sample v3"
 ```
 - Once created, you can find the newly deployed application on the topology as shown below. Keep in mind that it is a serverless application so the pods will be terminated if you aren't accessing it which means the circle around the pod will be colored in white. If you try to access the application externally, you will notice new pods have been created, which will change the color to dark blue. You will notice that the application is inaccessible, but don't worry much, we will be using the it with the frontend application.
 ![topology backend](https://user-images.githubusercontent.com/36239840/105719666-fbf86000-5f3b-11eb-8cfc-6328f0be8e26.JPG)
 - Make sure to copy the route of the backend, because you will be using it to make an API call from your frontend application. To view the route of the backend from the CLI, write the following command.
 ```oc get route.serving.knative.dev```
 ![route](https://user-images.githubusercontent.com/36239840/105720119-80e37980-5f3c-11eb-9b93-14f523044947.JPG)
-## Add Environment Variables to your Backend Application
-- In this step, you will be using secrets to pass your Cloudant service credintials to the applications. Use the following command and make sure to replace the fields with your actual credintials.
-```
-oc create secret generic secret --from-literal=apikey=<YOUR-CLOUDANT-API-KEY-HERE> -n sentiment-project
-```
-- Add the URL of your Cloudant instance as a configmap using the following command, make sure to replace the value of the url.
-```
-oc create configmap my-config --from-literal=url=<YOUR-CLOUDANT-URL-HERE> -n sentiment-project
-```
+
 ## Edit your Frontend application
 In your forked repo, you will need to replace the URL in the typescript code. Go to ```frontend-app.component.ts``` in the```/frontend/src/app/frontend-app/``` directory. Add the URL of the backend that you copied earlier to the following section in the ```onSubmit()``` function.<br>
 ```
@@ -94,7 +92,8 @@ onSubmit(){
 ```
 ## Create your frontend application
 - Create your frontend application from the CLI using the following command. Make sure to paste the URL of your forked repo and add ```frontend``` context directory.
-``` oc new-app https://github.com/nerdingitout/serverless-sentiment.git --context-dir=frontend
+```
+oc new-app <YOUR-FORKED-REPO-LINK-HERE> --context-dir=frontend
 ```
 - Expose your frontend application to access it externally
 ```
@@ -102,5 +101,11 @@ oc expose <pod-name>
 ```
 ## Test Your application and View logs
 - Now it's time to test your application using ```oc get pods``` command. Run it multiple times and notice changes how the application scales up and down everytime you submit your sentences through the frontend application.
-
+```
+oc get pods
+```
+```
+oc get all -n sentiment-project
+```
+## View the Database
 [PROVIDE SCREENSHOTS HERE]
