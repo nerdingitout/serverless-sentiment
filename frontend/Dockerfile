@@ -14,16 +14,19 @@ COPY . .
 ## Build the angular app in production mode and store the artifacts in dist folder
 RUN $(npm bin)/ng build 
 
-FROM bitnami/nginx
 
+
+FROM nginx:latest
+USER root
 ## Copy our default nginx config
 COPY nginx/default.conf /etc/nginx/conf.d/
-
 ## Remove default nginx website
-
+RUN rm -rf /usr/share/nginx/html/*
+COPY . .
 ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
 COPY --from=builder /ng-app/dist /usr/share/nginx/html
-RUN rm -rf /usr/share/nginx/html/*
 
+RUN chgrp -R 0 /var/cache/nginx /var/run /var/log/nginx && \
+    chmod g+rw  /var/cache/nginx /var/run /var/log/nginx
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
