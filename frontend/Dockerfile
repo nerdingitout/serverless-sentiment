@@ -26,7 +26,7 @@ COPY . .
 ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
 COPY --from=builder /ng-app/dist /usr/share/nginx/html
 
-RUN chgrp -R 0 /var/cache/nginx /var/run /var/log/nginx && \
-    chmod g+rw  /var/cache/nginx /var/run /var/log/nginx
+RUN chgrp -R 0 /var/cache/nginx /var/run /var/log/nginx /etc/nginx/nginx.conf && \
+    chmod g+rw  /var/cache/nginx /var/run /var/log/nginx /etc/nginx/nginx.conf
 EXPOSE 8080
 CMD ["nginx", "-g", "daemon off;"]
