@@ -1,0 +1,36 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: angular
+  labels:
+    app: angular
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  triggers:
+    - type: "ConfigChange"
+    - type: "ImageChange" 
+      imageChangeParams:
+        automatic: true
+        containerNames:
+          - angular
+        from:
+          kind: "ImageStreamTag"
+          name: angular
+  strategy:
+    type: "Rolling"
+  paused: false   
+  template:
+    metadata:
+      name: angular
+      labels:
+        app: angular
+    spec:
+      containers:
+        - name: angular
+          image: angular
+          imagePullPolicy: Always

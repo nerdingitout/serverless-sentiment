@@ -1,0 +1,33 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: angular
+  labels:
+    app: angular
+  annotations:
+    openshift.io/generated-by: OpenShiftWebConsole
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: angular
+  runPolicy: Serial
+  source:
+    git:
+      ref: master
+      uri: https://github.com/nerdingitout/serverless-sentiment
+    type: Git
+    contextDir: "frontend"
+  strategy:
+    dockerStrategy:
+    type: Docker
+  triggers:
+    - imageChange:
+      type: ImageChange
+    - type: ConfigChange
+    - generic:
+        secret: secret1
+      type: Generic
+    - github:
+        secret: secret1
+      type: GitHub
