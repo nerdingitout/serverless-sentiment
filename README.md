@@ -9,8 +9,8 @@ For this tutorial you will need:
 - Sign up for your IBM Cloud account – https://ibm.biz/BdfFXA
 - Register for the live stream and access the replay – https://www.crowdcast.io/e/serverless-knative
 - Red Hat OpenShift Cluster 4 on IBM Cloud. You can get it from
-  - URL:
-  - Key:
+  - URL: https://oc-knative.mybluemix.net/
+  - Key: oslab
 - oc CLI (can be downloaded from this link or you can use it at http://shell.cloud.ibm.com/.
 ## Estimated Time
 It will take you around 30 minutes to complete this tutorial.
@@ -30,14 +30,9 @@ It will take you around 30 minutes to complete this tutorial.
 ![credintials](https://user-images.githubusercontent.com/36239840/105366671-099aa680-5c19-11eb-8960-dd609bfbb297.JPG)
 - Next, go to Dashboard under Manage tab and click 'Launch Dashboard'.<br>
 ![launch dashboard](https://user-images.githubusercontent.com/36239840/105606331-26b6ad00-5db2-11eb-868a-aaaa5428f2e6.JPG)
-- Then create the Database as shown in the image. Name it 'sample', select Non-parttioned, and click Create.
+- Then create the Database as shown in the image. Name it <b>'sample'</b>, select Non-parttioned, and click Create.
 ![createdb](https://user-images.githubusercontent.com/36239840/105606398-8c0a9e00-5db2-11eb-8fc6-edddf29e7596.JPG)
 - The sample database opens automatically. Leave the database empty for now. At a later step, you will create the documents through the backend.
-
-## Login from the CLI
-- Go to the web console and click on your username at the top right then 'Copy Login Command', then display the token and copy the ```oc login``` command in your terminal.<br>
-![login](https://user-images.githubusercontent.com/36239840/97104809-26821500-16d0-11eb-936e-c2b7fb914523.JPG)
-
 ## Install OpenShift Serverless
 - From the web console, you can install the OpenShift Serverless Operator using the OperatorHub in your OpenShift dashboard. Use Update Channel version 4.5
 ![serverless operator](https://user-images.githubusercontent.com/36239840/105360538-21baf780-5c12-11eb-8b87-41c77346dca0.JPG)
@@ -47,6 +42,10 @@ It will take you around 30 minutes to complete this tutorial.
 oc get knativeserving.operator.knative.dev/knative-serving -n knative-serving --template='{{range .status.conditions}}{{printf "%s=%s\n" .type .status}}{{end}}'
 ```
 ![image](https://user-images.githubusercontent.com/36239840/105842199-3ff86d00-5fef-11eb-8b0c-ebeaff989516.png)
+
+## Login from the CLI
+- Go to the web console and click on your username at the top right then 'Copy Login Command', then display the token and copy the ```oc login``` command in your terminal.<br>
+![login](https://user-images.githubusercontent.com/36239840/97104809-26821500-16d0-11eb-936e-c2b7fb914523.JPG)
 
 ## Create Project
 - From the CLI, create a project and name it 'sentiment-project' as shown in the following command.<br>
@@ -85,7 +84,7 @@ spec:
       containers:
         - image: s4saif/senti:v6
 ```
-- Once created, you can find the newly deployed application on the topology as shown below. Keep in mind that it is a serverless application so the pods will be terminated if you aren't accessing it which means the circle around the pod will be colored in white. If you try to access the application externally, you will notice new pods have been created, which will change the color to dark blue. You will notice that the application is inaccessible, but don't worry much, we will be using the it with the frontend application.
+- Once created, you can find the newly deployed application on the topology as shown below. Keep in mind that it is a serverless application so the pods will be terminated if you aren't accessing it which means the circle around the pod will be colored in white. If you try to access the application externally, you will notice new pods have been created, which will change the color to dark blue. You might notice that the application is inaccessible, but don't worry much, we will be using the it with the frontend application.
 ![topology backend](https://user-images.githubusercontent.com/36239840/105719666-fbf86000-5f3b-11eb-8cfc-6328f0be8e26.JPG)
 - Make sure to copy the route of the backend, because you will be using it to make an API call from your frontend application. To view the route of the backend from the CLI, write the following command.
 ```
@@ -94,7 +93,7 @@ oc get route.serving.knative.dev
 ![route](https://user-images.githubusercontent.com/36239840/105720119-80e37980-5f3c-11eb-9b93-14f523044947.JPG)
 
 ## Edit your Frontend application
-- In your forked repo, you will need to replace the URL in the typescript code. Go to ```frontend-app.component.ts``` in the```/frontend/src/app/frontend-app/``` directory. Add the URL of the backend that you copied earlier to the following section in the ```onSubmit()``` function.<br>
+- In your forked repo, you will need to replace the URL in the typescript code. Go to ```frontend-app.component.ts``` in the```/frontend/src/app/frontend-app/``` directory. Add the URL of the backend that you copied earlier to <b>(line 22)</b> the following section in the <b>```onSubmit()```</b> function.<br>
 ```
   onSubmit(){
     this.apiSentiment='';
@@ -127,7 +126,7 @@ spec:
 ```
 oc apply -f yamls/
 ```
-Or you can use the following commands with your URL (make sure to replace the username).
+Or you can use the following commands with your URL <b>(make sure to replace the username)</b>.
 ```
 oc apply -f https://raw.githubusercontent.com/<YOUR-USERNAME>/serverless-sentiment/main/frontend/yamls/buildconfig.yaml
 ```
