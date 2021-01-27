@@ -107,7 +107,7 @@ oc get route.serving.knative.dev
     })
   }
 ```
-- In your forked repo, make sure to edit the ```buildconfig.yaml``` file, by replacing the uri with the URL of your github repo as shown below.
+- In your forked repo, make sure to edit the ```buildconfig.yaml``` file, <b>by replacing the value of uri with the URL of your github repo as shown below.</b>
 ```
 spec:
   output:
@@ -118,7 +118,7 @@ spec:
   source:
     git:
       ref: main
-      uri: <YOUR-URI-HERE>
+      uri: <YOUR-GITHUB-REPO-URL-HERE>
     type: Git
 ```
 ## Create your frontend application
@@ -161,4 +161,6 @@ oc get all -n sentiment-project
 ## View the Database
 ![image](https://user-images.githubusercontent.com/36239840/105850425-25c48c00-5ffb-11eb-9885-539b4cbe136e.png)
 
+## Summary
+In this tutorial, you performed several tasks to build an entire appliction that makes use of the serverless functionality. On Red Hat OpenShift, you can build serverless applications through the Serverless Operator that is based on the Knative project. In this tutorial, you used one of the main components of Knative, which is Knative Serving. Knative Serving autoscales your application on demand and scales it down to zero when it's not used, and through this tutorial you were able to learn how it works.
 
