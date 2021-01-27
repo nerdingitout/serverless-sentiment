@@ -144,6 +144,10 @@ oc apply -f https://raw.githubusercontent.com/<YOUR-USERNAME>/serverless-sentime
 ```
 oc expose <pod-name>
 ```
+- Get the route of your frontend application
+```
+oc get routes
+```
 ## Test Your application and View logs
 - Open the frontend application from the external route and submit messages in the form.
 ![image](https://user-images.githubusercontent.com/36239840/105845286-f9f1d800-5ff3-11eb-9a7c-d052cc1a35ff.png)
