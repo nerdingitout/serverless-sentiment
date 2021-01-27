@@ -16,6 +16,8 @@ export class FrontendAppComponent {
 
   onSubmit(){
     this.apiSentiment='';
+    this.apiText='';
+    this.apiSentimentNum='';
     // Simple POST request with a JSON body and response type <any>
     this.http.post<any>('http://sentiment-default.masa-cluster-new-162e406f043e20da9b0ef0731954a894-0000.eu-de.containers.appdomain.cloud'+'/api/post_sentiment', { text: this.Sentence.value }).subscribe(data => {
       this.apiSentimentNum = data.sentiment;
