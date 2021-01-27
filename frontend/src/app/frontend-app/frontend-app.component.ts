@@ -15,21 +15,22 @@ export class FrontendAppComponent {
   Sentence= new FormControl('');
 
   onSubmit(){
-      this.apiSentiment='';
-            // Simple POST request with a JSON body and response type <any>
-            this.http.post<any>('http://sentiment-default.masa-cluster-new-162e406f043e20da9b0ef0731954a894-0000.eu-de.containers.appdomain.cloud/api/post_sentiment', { text: this.Sentence.value }).subscribe(data => {
-              this.apiSentimentNum = data.sentiment;
-              this.apiText = data.text;
-          })
-          // the following code specifies the range of each sentiment which its value is min=-1 and max=1, can be customized
-          if (this.apiSentimentNum<0 && this.apiSentimentNum>=-1){
-            this.apiSentiment="Negative";
-          }
-          else if (this.apiSentimentNum<=1 && this.apiSentimentNum>=0.7){
-            this.apiSentiment="Positive";
-          }
-          else if (this.apiSentimentNum<0.7 && this.apiSentimentNum>=0){
-            this.apiSentiment="Neutral";
-          }
+    this.apiSentiment='';
+    // Simple POST request with a JSON body and response type <any>
+    this.http.post<any>('http://sentiment-default.masa-cluster-new-162e406f043e20da9b0ef0731954a894-0000.eu-de.containers.appdomain.cloud'+'/api/post_sentiment', { text: this.Sentence.value }).subscribe(data => {
+      this.apiSentimentNum = data.sentiment;
+      this.apiText = data.text;
+    // the following code specifies the range of each sentiment which its value is min=-1 and max=1, can be customized
+    if (this.apiSentimentNum<0 && this.apiSentimentNum>=-1){
+      this.apiSentiment="Negative";
     }
+    else if (this.apiSentimentNum<=1 && this.apiSentimentNum>=0.7){
+      this.apiSentiment="Positive";
+    }
+    else if (this.apiSentimentNum<0.7 && this.apiSentimentNum>=0){
+      this.apiSentiment="Neutral";
+    }
+    })
+
+  }
 }
