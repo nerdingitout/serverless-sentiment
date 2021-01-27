@@ -96,13 +96,17 @@ oc get route.serving.knative.dev
 ## Edit your Frontend application
 - In your forked repo, you will need to replace the URL in the typescript code. Go to ```frontend-app.component.ts``` in the```/frontend/src/app/frontend-app/``` directory. Add the URL of the backend that you copied earlier to the following section in the ```onSubmit()``` function.<br>
 ```
-onSubmit(){
-      this.apiSentiment='';
-            // Simple POST request with a JSON body and response type <any>
-            this.http.post<any>('<ADD-BACKEND-URL-HERE>'+'/api/post_sentiment', { text: this.Sentence.value }).subscribe(data => {
-              this.apiSentimentNum = data.sentiment;
-              this.apiText = data.text;
-          })
+  onSubmit(){
+    this.apiSentiment='';
+    // Simple POST request with a JSON body and response type <any>, replace backend url in the api post request
+    this.http.post<any>('<ADD-BACKEND-URL-HERE>'+'/api/post_sentiment', { text: this.Sentence.value }).subscribe(data => {
+      this.apiSentimentNum = data.sentiment;
+      this.apiText = data.text;
+    .
+    .
+    .
+    })
+  }
 ```
 - In your forked repo, make sure to edit the ```buildconfig.yaml``` file, by replacing the uri with the URL of your github repo as shown below.
 ```
