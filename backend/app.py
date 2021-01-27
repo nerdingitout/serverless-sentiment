@@ -6,10 +6,11 @@ from ibmcloudant.cloudant_v1 import Document, CloudantV1
 from flask import Flask, jsonify, abort, request
 import uuid 
 from flask_cors import CORS
+import os
 
-authenticator = IAMAuthenticator('UK-0lDYQNUHnrEWvCnQtH_-hG2AwRhQ0BUkUGs1atROs')
+authenticator = IAMAuthenticator(os.environ['apikey'])
 service = CloudantV1(authenticator=authenticator)
-service.set_service_url('https://cbed9894-316b-43db-8d39-94a253532c6c-bluemix.cloudantnosqldb.appdomain.cloud')
+service.set_service_url(os.environ['url'])
 app = Flask(__name__)
 CORS(app)
 @app.route('/api/post_sentiment', methods=['POST'])

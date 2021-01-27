@@ -8,6 +8,3 @@ spec:
     spec:
       containers:
         - image: s4saif/senti:v6
-          env:
-            - name: TARGET
-              value: "Sample v3"
