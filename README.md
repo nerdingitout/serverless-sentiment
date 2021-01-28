@@ -82,7 +82,7 @@ spec:
   template:
     spec:
       containers:
-        - image: s4saif/senti:v6
+        - image: s4saif/senti:v7
 ```
 - Once created, you can find the newly deployed application on the topology as shown below. Keep in mind that it is a serverless application so the pods will be terminated if you aren't accessing it which means the circle around the pod will be colored in white. If you try to access the application externally, you will notice new pods have been created, which will change the color to dark blue. You might notice that the application is inaccessible, but don't worry much, we will be using the it with the frontend application.
 ![topology backend](https://user-images.githubusercontent.com/36239840/105719666-fbf86000-5f3b-11eb-8cfc-6328f0be8e26.JPG)
