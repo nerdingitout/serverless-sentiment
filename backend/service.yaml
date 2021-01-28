@@ -6,7 +6,7 @@ spec:
   template:
     spec:
       containers:
-        - image: s4saif/senti:v7
+        - image: s4saif/senti:v9
           env:
             - name: apikey
               valueFrom:
