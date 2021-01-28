@@ -2,9 +2,19 @@ apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   name: sentiment 
-  namespace: default 
 spec:
   template:
     spec:
       containers:
-        - image: s4saif/senti:v6
+        - image: s4saif/senti:v7
+          env:
+            - name: apikey
+              valueFrom:
+                secretKeyRef:
+                  name: secret
+                  key: apikey
+            - name: url
+              valueFrom:
+                configMapKeyRef:
+                  name: my-config
+                  key: url
