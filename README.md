@@ -141,7 +141,7 @@ oc apply -f https://raw.githubusercontent.com/<YOUR-USERNAME>/serverless-sentime
 ```
 - Expose your frontend application to access it externally
 ```
-oc expose <pod-name>
+oc expose service angular
 ```
 - Get the route of your frontend application
 ```
