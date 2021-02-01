@@ -47,6 +47,15 @@ git clone https://github.com/<YOUR-ACCOUNT-NAME>/serverless-sentiment
 ## Login from the CLI
 - Go to the web console and click on your username at the top right then 'Copy Login Command', then display the token and copy the ```oc login``` command in your terminal.<br>
 ![login](https://user-images.githubusercontent.com/36239840/97104809-26821500-16d0-11eb-936e-c2b7fb914523.JPG)<br>
+- Create ```knative-serving``` project to create Knative Serving Service.
+```
+oc new-project knative-serving
+```
+- From the web console, go back to the Serverless Operator and open details page, make sure you are in the knative-serving namespace. Click 'create instance' for Knative Serving.
+![knative serving](https://user-images.githubusercontent.com/36239840/106424619-ee7f3080-647b-11eb-819d-e135317fac05.JPG)
+- You will be redirected to a new page 'Create Knative Serving', make sure its name is 'knative-serving', there's no need to make any changes, just click create.
+![image](https://user-images.githubusercontent.com/36239840/106424711-166e9400-647c-11eb-9fe5-b3bb11366618.png)
+
 - Check if Knative Serving was installed successfully. The value of `Ready` must equal `True` before you can proceed.
 ```
 oc get knativeserving.operator.knative.dev/knative-serving -n knative-serving --template='{{range .status.conditions}}{{printf "%s=%s\n" .type .status}}{{end}}'
