@@ -55,7 +55,8 @@ oc new-project knative-serving
 ![knative serving](https://user-images.githubusercontent.com/36239840/106424619-ee7f3080-647b-11eb-819d-e135317fac05.JPG)
 - You will be redirected to a new page 'Create Knative Serving', make sure its name is 'knative-serving', there's no need to make any changes, just click create.
 ![image](https://user-images.githubusercontent.com/36239840/106424711-166e9400-647c-11eb-9fe5-b3bb11366618.png)
-
+- Once created, you will noticed that it has been added under Knative Serving.
+![image](https://user-images.githubusercontent.com/36239840/106424925-79602b00-647c-11eb-966e-70c8f69829f5.png)
 - Check if Knative Serving was installed successfully. The value of `Ready` must equal `True` before you can proceed.
 ```
 oc get knativeserving.operator.knative.dev/knative-serving -n knative-serving --template='{{range .status.conditions}}{{printf "%s=%s\n" .type .status}}{{end}}'
